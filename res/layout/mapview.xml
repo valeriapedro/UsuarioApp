@@ -12,11 +12,20 @@
 		/>
 
 	</LinearLayout>
+
 	<com.google.android.maps.MapView
-		android:id="@+id/mapa"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:enabled="true"
-		android:clickable="true"
-		android:apiKey="0GOVdkAdE2ImUkEm-k_ZK8zm2qf4ZUwfv-AQSJw"
-	/>
+	    android:id="@+id/mapa"
+	    android:layout_width="fill_parent"
+	    android:layout_height="355dp"
+	    android:apiKey="0GOVdkAdE2ImUkEm-k_ZK8zm2qf4ZUwfv-AQSJw"
+	    android:clickable="true"
+	    android:enabled="true" />
+
+	<Button
+	    android:id="@+id/btnInicio"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:onClick="onClick"
+	    android:text="@string/txtBtnInicio" />
+
 </LinearLayout>
