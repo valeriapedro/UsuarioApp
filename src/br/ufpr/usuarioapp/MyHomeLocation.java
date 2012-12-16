@@ -14,12 +14,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 
-/**
- * Atualiza as coordenadas do GPS "mock" no Mapa
- * 
- * @author ricardo
- * 
- */
+
 public class MyHomeLocation extends MapActivity implements LocationListener {
 	private static final String CATEGORIA = "livro";
 	private MapController controlador;
@@ -33,7 +28,10 @@ public class MyHomeLocation extends MapActivity implements LocationListener {
 		mapa = (MapView) findViewById(R.id.mapa);
 		controlador = mapa.getController();
 		controlador.setZoom(16);
-
+		
+		//Adiciona os controladores de zoom no mapa automaticamente
+		mapa.setBuiltInZoomControls(true);
+		
 		// Centraliza o mapa na última localização conhecida
 		Location loc = getLocationManager().getLastKnownLocation(LocationManager.GPS_PROVIDER);
 

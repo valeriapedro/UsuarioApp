@@ -7,13 +7,10 @@
 		android:orientation="horizontal">
 		<TextView 
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:text="TaxiCall  "
+			android:text="Você está aqui..."
 			android:gravity="center" 
 		/>
-		<ImageView
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:src="@drawable/smile" 
-		/>
+
 	</LinearLayout>
 	<com.google.android.maps.MapView
 		android:id="@+id/mapa"
