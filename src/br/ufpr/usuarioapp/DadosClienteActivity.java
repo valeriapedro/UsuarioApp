@@ -7,10 +7,12 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ public class DadosClienteActivity extends Activity {
 	private static final String CATEGORIA = "TESTE TELA 2";
 	private EditText inpEndereco;
 	private EditText inpReferencia;
+	private Button BtnChamarTaxi;
 	//parametros da tela anterior
 	private Bundle paramsBundle ;
 
@@ -38,11 +41,11 @@ public class DadosClienteActivity extends Activity {
 		if(it != null){
 			Bundle paramsBundle = it.getExtras();
 			if (paramsBundle != null) {
-				//String lat = params.getString("lat");
-				//String lng = params.getString("lng");
+				String lat = paramsBundle.getString("lat");
+				String lng = paramsBundle.getString("lng");
 				inpEndereco.setText(paramsBundle.getString("end"));               
 
-				//Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +params.getString("end"));
+				Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +paramsBundle.getString("end"));
 			}
 		}
 		
@@ -62,24 +65,40 @@ public class DadosClienteActivity extends Activity {
 	public void onClick(View v){
 		    	switch(v.getId()){
 		    	case R.id.BtnChamarTaxi:
+		    		Toast.makeText(DadosClienteActivity.this, "Botão Funcionando Ok", Toast.LENGTH_SHORT).show();
 		    		
-		    		//Pega referencia digitada pelo usuario
-		    		String referencia = null;
+		    		//Pega referencia digitada pelo usuario - Só passa para a proxima tela quando a referencia é informada
+		    		String referencia = inpReferencia.getText().toString();
 		    		
-		    		if (inpReferencia.getText() != null) {
-		    			referencia = inpReferencia.getText().toString();
-		    		} else {
-		    			//Implementar diálogo para o usuario
-		    			Log.i(CATEGORIA, "ALERT: Usuário não preencheu a referência.");
-		    		}
+		    		if (referencia.equals(""))  { 		    				
+		    			//Implementa diálogo para o usuario
+		    			AlertDialog.Builder mensagem = new
+			                       AlertDialog.Builder(DadosClienteActivity.this);
+			    				mensagem.setTitle("Aviso");
+			    				mensagem.setMessage("Por favor, entre com uma referência para ajudar nosso taxista a encontrá-lo!");
+			    				mensagem.setNeutralButton("OK", null);
+			    				mensagem.show();
 		    			
+		    			Log.i(CATEGORIA, "ALERT: Referencia = "+referencia);
+		    				
+		    				
+		    		} else {
+		    			Intent it = new Intent(this,BuscandoTaxiActivity.class);
+						it.putExtra("msg", "Olá");
+						startActivity(it);
+		    		}
+		    		//}
 
+		    			
+		    		/*	
 		    		//É criado um HashMap que possui os parametros da classe Bundle enviados pela tela anterior
 		    		//
 		    		String lat = paramsBundle.getString("lat");
 		    		String lng = paramsBundle.getString("lng");
 		    		String end = paramsBundle.getString("end");
 		    		
+		    		
+		    		Log.i("Teste Botao Tela 2", "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +paramsBundle.getString("end"));
 		    		//Insere parametros no HashMap
 		    		HashMap<String, String> paramsHm = new HashMap<String, String>() ; 
 
@@ -105,9 +124,11 @@ public class DadosClienteActivity extends Activity {
 					}
 		        	//mostra a placa encontrada
 		        	Toast.makeText(this, "Placa: "+placa, Toast.LENGTH_LONG).show() ;
-		        	
+		        	*/
 		    		break ;
-		    	}//Fecha switch
+		    	//Fecha switch
 	}//Fecha onClick
-
+	}
 }
+	
+

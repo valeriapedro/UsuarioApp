@@ -15,7 +15,7 @@
     
     <!--  Strings do formulario DadosClienteActivity -->
     <string name="txtSeuEndereco">Seu endereço:</string>
-    <string name="txtReferencia">Referência: (Ajude nosso taxista a localizá-lo melhor)</string>
+    <string name="txtReferencia">Referência:</string>
     <string name="txtBtnChamarTaxi">Chamar Taxi</string>
 
     <!-- Url para acessar WS apartir do emulador -->
