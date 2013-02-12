@@ -21,7 +21,8 @@ public class DadosClienteActivity extends Activity {
 	private static final String CATEGORIA = "TESTE TELA 2";
 	private EditText inpEndereco;
 	private EditText inpReferencia;
-	
+	//parametros da tela anterior
+	private Bundle paramsBundle ;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -35,13 +36,13 @@ public class DadosClienteActivity extends Activity {
 		//Recupera parametros da classe Bundle da tela anterior: Latitude, Longitude e Endereco
 		Intent it = getIntent();
 		if(it != null){
-			Bundle params = it.getExtras();
-			if (params != null) {
-				String lat = params.getString("lat");
-				String lng = params.getString("lng");
-				inpEndereco.setText(params.getString("end"));               
+			Bundle paramsBundle = it.getExtras();
+			if (paramsBundle != null) {
+				//String lat = params.getString("lat");
+				//String lng = params.getString("lng");
+				inpEndereco.setText(paramsBundle.getString("end"));               
 
-				Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +params.getString("end"));
+				//Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +params.getString("end"));
 			}
 		}
 		
@@ -68,20 +69,32 @@ public class DadosClienteActivity extends Activity {
 		    		if (inpReferencia.getText() != null) {
 		    			referencia = inpReferencia.getText().toString();
 		    		} else {
+		    			//Implementar diálogo para o usuario
 		    			Log.i(CATEGORIA, "ALERT: Usuário não preencheu a referência.");
 		    		}
 		    			
 		    		//placa que retorna o taxi mais proximo
-		    		String placa = null ;
-		    		//É criado um HashMap que possui os dados de coordenadas GPS do usuário
-		    		//HashMap<String, String> params = getCoordenadas() ; 
+		    		//String placa = null ;
+		    		//É criado um HashMap que possui os parametros da classe Bundle enviados pela tela anterior
+		    		//
+		    		String lat = paramsBundle.getString("lat");
+		    		String lng = paramsBundle.getString("lng");
+		    		String end = paramsBundle.getString("end");
+		    		
+		    		//Insere parametros no HashMap
+		    		HashMap<String, String> paramsHm = new HashMap<String, String>() ; 
 
+		    		paramsHm.put("lat", lat);
+		    		paramsHm.put("lng", lng);
+		    		paramsHm.put("end", end);
+		    		paramsHm.put("ref", referencia);
+		    		
 		    		//Cria-se o objeto JSON a partir do HashMap
-		            //JSONObject jsonParams = new JSONObject(params);
+		            JSONObject jsonParams = new JSONObject(paramsHm);
 		            
 		            //Obtém-se a 'reposta' da WebService, definido o método a ser acessado e os parâmetros
 		            //url_ws1 = url da ws a apartir do emulador
-		        	//JSONObject resp = HttpClient.SendHttpPost(this.getString(R.string.url_ws1_chamartaxi), jsonParams);
+		        	JSONObject resp = HttpClient.SendHttpPost(this.getString(R.string.url_ws1_chamartaxi), jsonParams);
 		        	
 		        	
 		        	//Conecta no webservice e mostra na tela do emulador a placa mais próxima 
