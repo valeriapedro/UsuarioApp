@@ -177,6 +177,8 @@ public class MyHomeLocationActivity extends MapActivity implements LocationListe
 		    		String lng = params.get("lng");
 		    		String end = params.get("end");
 			    	
+		    		//Log.d("TESTE BOTAO", "Lat: "+lat+ " Lng: "+lng+ "Endereco: " +end) ;
+		    		
 		        	//Chamada pra tela de confirmação com os dados do cliente.. 
 		    		//Lat, long, Endereço encontrado pelo Geocoder e Referencia
 		    		//Esses dados irão compor a classe Pedido na WebService
@@ -269,9 +271,12 @@ public class MyHomeLocationActivity extends MapActivity implements LocationListe
 		        local = LM.getLastKnownLocation(bestProvider) ;
 		        
 		        //Obtém-se os valores de latitude e longitude
-		        //Originalmente o lat e long são retornados como double, foram convertidos para string para deixar o HashMap homogeneo
+		        //tipo Double
 		        lat = local.getLatitude() ;
 		        lng = local.getLongitude() ;
+		        //tipo String
+		        lat1 = String.valueOf(local.getLatitude()) ;
+		        lng1 = String.valueOf(local.getLongitude()) ;
 		        
 		        /*
 		         * Pegar endereco atraves do reverse geocoder
@@ -321,12 +326,9 @@ public class MyHomeLocationActivity extends MapActivity implements LocationListe
 		            Log.e("GeocoderLog", "Deu erro o geo coder - " + e.getMessage());
 		        }
 		        */
-
-		        
-		        //lat = String.valueOf(local.getLatitude()) ;
-		        //lng = String.valueOf(local.getLongitude()) ;
+		       
 				
-		        Log.d("TESTE Tela Home", "Lat: "+lat+ " Lng: "+lng+ "Endereco: " +addressText) ;
+		        //Log.d("TESTE Tela Home", "Lat: "+lat+ " Lng: "+lng+ "Endereco: " +addressText) ;
 		        
 		        //Valores são inseridos no HashMap
 		        params.put("lat", lat1);

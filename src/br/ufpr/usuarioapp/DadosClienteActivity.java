@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class DadosClienteActivity extends Activity {
 
 
-	private static final String CATEGORIA = "TESTE PARAMETROS Tela 2";
+	private static final String CATEGORIA = "TESTE TELA 2";
 	private EditText inpEndereco;
 	private EditText inpReferencia;
 	
@@ -32,26 +32,22 @@ public class DadosClienteActivity extends Activity {
 		inpEndereco = (EditText) findViewById(R.id.inpEndereco);
 		inpReferencia = (EditText) findViewById(R.id.inpReferencia);
 		
+		//Recupera parametros da classe Bundle da tela anterior: Latitude, Longitude e Endereco
 		Intent it = getIntent();
 		if(it != null){
 			Bundle params = it.getExtras();
 			if (params != null) {
-				//String msg = params.getString("msg");
-				inpEndereco.setText(params.getString("end"));
-                
+				String lat = params.getString("lat");
+				String lng = params.getString("lng");
+				inpEndereco.setText(params.getString("end"));               
 
-				Log.i(CATEGORIA, "Latitude: " + params.getString("lat")+ "Longitude: " +params.getString("lng")+ "Endereco: " +params.getString("end"));
+				Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +params.getString("end"));
 			}
 		}
+		
+		
 
-		//Intent it = getIntent();
-		//if(it != null){
-			//String msg = it.getStringExtra("msg");
-			//if (msg != null) {
-				//Log.i(CATEGORIA, "Mensagem: " + msg);
-			//}
-		//}
-	}
+	}// fecha OnCreate
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,6 +61,16 @@ public class DadosClienteActivity extends Activity {
 	public void onClick(View v){
 		    	switch(v.getId()){
 		    	case R.id.BtnChamarTaxi:
+		    		
+		    		//Pega referencia digitada pelo usuario
+		    		String referencia = null;
+		    		
+		    		if (inpReferencia.getText() != null) {
+		    			referencia = inpReferencia.getText().toString();
+		    		} else {
+		    			Log.i(CATEGORIA, "ALERT: Usuário não preencheu a referência.");
+		    		}
+		    			
 		    		//placa que retorna o taxi mais proximo
 		    		String placa = null ;
 		    		//É criado um HashMap que possui os dados de coordenadas GPS do usuário
