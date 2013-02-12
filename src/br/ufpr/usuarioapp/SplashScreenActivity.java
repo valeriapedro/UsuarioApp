@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class SplashScreen extends Activity implements Runnable {
+public class SplashScreenActivity extends Activity implements Runnable {
 /** Called when the activity is first created. */
 
 	@Override
@@ -18,7 +18,7 @@ public void onCreate(Bundle savedInstanceState) {
 }
 
 public void run(){
-		startActivity(new Intent(this, MyHomeLocation.class));//aqui é iniciada nossa 2 activity
+		startActivity(new Intent(this, MyHomeLocationActivity.class));//aqui é iniciada nossa 2 activity
 		finish();//aqui é chamado o método finish pra finalizar a activity atual no caso SplashScreen
 }
 }

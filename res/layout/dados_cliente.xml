@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DadosClienteActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtSeuEndereco" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BtnChamarTaxi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/txtBtnChamarTaxi" />
+    
+	<!-- Entrada de texto para o endereço encontrado -->
+
+    <EditText
+        android:id="@+id/inpEndereco"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:ems="10"
+        android:inputType="text" >
+        <!--android:text="Entrada do endereço"  --> 
+
+        <requestFocus />
+    </EditText>
+	
+    <!-- Entrada de texto para a referencia, digitada pelo usuario -->
+
+    <TextView
+        android:id="@+id/txtReferencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/inpEndereco"
+        android:text="@string/txtReferencia" />
+
+    <EditText
+        android:id="@+id/inpReferencia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtReferencia"
+        android:ems="10"
+        android:inputType="text" />
+        <!-- android:text="Entrada da referencia"    -->
+
+</RelativeLayout>

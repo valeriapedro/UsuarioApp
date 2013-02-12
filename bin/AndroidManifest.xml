@@ -28,9 +28,9 @@
         <uses-library
             android:name="com.google.android.maps"
             android:required="true" />
-        
+
         <activity
-            android:name="br.ufpr.usuarioapp.SplashScreen"
+            android:name="br.ufpr.usuarioapp.SplashScreenActivity"
             android:label="@string/title_activity_splash_screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,24 +38,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="br.ufpr.usuarioapp.MapaHome" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufpr.usuarioapp.MyHomeLocation"
+            android:name="br.ufpr.usuarioapp.MyHomeLocationActivity"
             android:label="@string/title_activity_my_home_location" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                
             </intent-filter>
         </activity>
-        
-        
+        <activity
+            android:name="br.ufpr.usuarioapp.BuscandoTaxiActivity"
+            android:label="@string/title_activity_buscando_taxi" >
+        </activity>
+        <activity
+            android:name="br.ufpr.usuarioapp.DadosClienteActivity"
+            android:label="@string/title_activity_dados_cliente" >
+        </activity>
     </application>
 
 </manifest>
