@@ -73,8 +73,7 @@ public class DadosClienteActivity extends Activity {
 		    			Log.i(CATEGORIA, "ALERT: Usuário não preencheu a referência.");
 		    		}
 		    			
-		    		//placa que retorna o taxi mais proximo
-		    		//String placa = null ;
+
 		    		//É criado um HashMap que possui os parametros da classe Bundle enviados pela tela anterior
 		    		//
 		    		String lat = paramsBundle.getString("lat");
@@ -96,15 +95,16 @@ public class DadosClienteActivity extends Activity {
 		            //url_ws1 = url da ws a apartir do emulador
 		        	JSONObject resp = HttpClient.SendHttpPost(this.getString(R.string.url_ws1_chamartaxi), jsonParams);
 		        	
-		        	
+		    		//placa que retorna o taxi mais proximo do usuario
+		    		String placa = null ;
 		        	//Conecta no webservice e mostra na tela do emulador a placa mais próxima 
-		        	//try {
-					//	placa = resp.getString("Placa") ;
-					//} catch (JSONException e) {
-					//	e.printStackTrace();
-					//}
+		        	try {
+						placa = resp.getString("Placa") ;
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 		        	//mostra a placa encontrada
-		        	//Toast.makeText(this, "Placa: "+placa, Toast.LENGTH_LONG).show() ;
+		        	Toast.makeText(this, "Placa: "+placa, Toast.LENGTH_LONG).show() ;
 		        	
 		    		break ;
 		    	}//Fecha switch
