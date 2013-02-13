@@ -23,9 +23,11 @@ public class DadosClienteActivity extends Activity {
 	private static final String CATEGORIA = "TESTE TELA 2";
 	private EditText inpEndereco;
 	private EditText inpReferencia;
-	private Button BtnChamarTaxi;
+	
 	//parametros da tela anterior
 	private Bundle paramsBundle ;
+	private String lat, lng, end;
+
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -41,8 +43,9 @@ public class DadosClienteActivity extends Activity {
 		if(it != null){
 			Bundle paramsBundle = it.getExtras();
 			if (paramsBundle != null) {
-				String lat = paramsBundle.getString("lat");
-				String lng = paramsBundle.getString("lng");
+				lat = paramsBundle.getString("lat");
+				lng = paramsBundle.getString("lng");
+				end = paramsBundle.getString("end");
 				inpEndereco.setText(paramsBundle.getString("end"));               
 
 				Log.i(CATEGORIA, "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +paramsBundle.getString("end"));
@@ -61,15 +64,17 @@ public class DadosClienteActivity extends Activity {
 	}
 	
 	//Implementa o evento OnClick do botão 'Chamar Taxi'
-	//Aqui a lógica de criação do objeto Json é tomada e em seguida a conexão via http é efetuada para o servidor
+	//Essa tela tem a finalidade em confirmar os dados pelo usuario .Ao clicar em Chamar taxi, outra tela é chamada para processamento do pedido
 	public void onClick(View v){
 		    	switch(v.getId()){
 		    	case R.id.BtnChamarTaxi:
+		    		Log.i(CATEGORIA, "Latitude: " +lat+ "Longitude: " +lng+ "Endereco: " +end);
 		    		Toast.makeText(DadosClienteActivity.this, "Botão Funcionando Ok", Toast.LENGTH_SHORT).show();
 		    		
 		    		//Pega referencia digitada pelo usuario - Só passa para a proxima tela quando a referencia é informada
 		    		String referencia = inpReferencia.getText().toString();
 		    		
+		    		//Testa se a referencia esta preenchida
 		    		if (referencia.equals(""))  { 		    				
 		    			//Implementa diálogo para o usuario
 		    			AlertDialog.Builder mensagem = new
@@ -83,9 +88,17 @@ public class DadosClienteActivity extends Activity {
 		    				
 		    				
 		    		} else {
-		    			Intent it = new Intent(this,BuscandoTaxiActivity.class);
-						it.putExtra("msg", "Olá");
+						
+				    	//Cria um novo Bundle para a proxima tela.. Todos os parametros passaods + a referencia
+			    		Intent it = new Intent(this,BuscandoTaxiActivity.class);
+			    		Bundle params1 = new Bundle();
+						params1.putString("lat", lat);
+						params1.putString("lng", lng);
+						params1.putString("end", end);
+						params1.putString("ref", referencia);	
+						it.putExtras(params1);
 						startActivity(it);
+		    		
 		    		}
 		    		//}
 
@@ -93,9 +106,7 @@ public class DadosClienteActivity extends Activity {
 		    		/*	
 		    		//É criado um HashMap que possui os parametros da classe Bundle enviados pela tela anterior
 		    		//
-		    		String lat = paramsBundle.getString("lat");
-		    		String lng = paramsBundle.getString("lng");
-		    		String end = paramsBundle.getString("end");
+		    		
 		    		
 		    		
 		    		Log.i("Teste Botao Tela 2", "Latitude: " + lat+ "Longitude: " +lng+ "Endereco: " +paramsBundle.getString("end"));

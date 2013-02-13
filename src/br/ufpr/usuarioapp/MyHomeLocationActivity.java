@@ -194,9 +194,7 @@ public class MyHomeLocationActivity extends MapActivity implements LocationListe
 					it.putExtras(params1);
 					startActivity(it);
 					
-					//Intent it = new Intent(this,DadosClienteActivity.class);
-					//it.putExtra("msg", "Olá");
-					//startActivity(it);		        	
+	        	
 		        	
 		    		break ;
 		    	}//Fecha switch

@@ -51,11 +51,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufpr.usuarioapp.BuscandoTaxiActivity"
+            android:name="br.ufpr.usuarioapp.BKP_BuscandoTaxiActivity"
             android:label="@string/title_activity_buscando_taxi" >
         </activity>
         <activity
             android:name="br.ufpr.usuarioapp.DadosClienteActivity"
+            android:label="@string/title_activity_dados_cliente" >
+        </activity>
+        <activity
+            android:name="br.ufpr.usuarioapp.BuscandoTaxiActivity"
             android:label="@string/title_activity_dados_cliente" >
         </activity>
     </application>
