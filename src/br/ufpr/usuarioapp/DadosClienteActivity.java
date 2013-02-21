@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.*;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,7 +34,7 @@ public class DadosClienteActivity extends Activity {
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
-		setContentView(R.layout.dados_cliente);
+		setContentView(R.layout.layout_dados_cliente);
 		
 		inpEndereco = (EditText) findViewById(R.id.inpEndereco);
 		inpReferencia = (EditText) findViewById(R.id.inpReferencia);
@@ -56,12 +57,6 @@ public class DadosClienteActivity extends Activity {
 
 	}// fecha OnCreate
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_dados_cliente, menu);
-		return true;
-	}
 	
 	//Implementa o evento OnClick do botão 'Chamar Taxi'
 	//Essa tela tem a finalidade em confirmar os dados pelo usuario .Ao clicar em Chamar taxi, outra tela é chamada para processamento do pedido

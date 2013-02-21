@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 >
-	<ImageView android:id="@+id/img"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-	/>
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/txtNomeTaxista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/titulo_confirmacao"
+        android:layout_marginTop="34dp"
+        android:text="Nome Taxista" />
+
+    <TextView
+        android:id="@+id/titulo_confirmacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/empty"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cpNomeTaxista"
+        android:layout_marginTop="51dp"
+        android:text="Placa Taxi" />
+
+    <EditText
+        android:id="@+id/cpPlacaTaxista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/cpNomeTaxista"
+        android:ems="10"
+        android:text="@string/cpPlacaTaxista" />
+
+    <EditText
+        android:id="@+id/cpNomeTaxista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtNomeTaxista"
+        android:layout_alignBottom="@+id/txtNomeTaxista"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:text="@string/cpNomeTaxista" />
+
+</RelativeLayout>
