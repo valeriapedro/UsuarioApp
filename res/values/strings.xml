@@ -23,10 +23,10 @@
     <string name="urlWSenviarPedido">http://10.0.2.2:8080/jersey/teste/enviarPedido</string>
     <string name="urlWSchecarConfirmacao">http://10.0.2.2:8080/jersey/teste/checarConfirmacao</string>
 
-    <!-- Url para acessa WS apartir do celular do Jonathan-->
+    <!-- Url para acessa WS apartir do celular-->
     <string name="url_ws2_chamartaxi">http://192.168.1.3:8080/jersey/teste/chamartaxi</string>   
-    <string name="urlWSenviarPedido1">http://192.168.1.101:8090/jersey/teste/enviarPedido</string>
-    <string name="urlWSchecarConfirmacao1">http://192.168.1.101:8090/jersey/teste/checarConfirmacao</string>
+    <string name="urlWSenviarPedido1">http://192.168.1.3:8080/jersey/teste/enviarPedido</string>
+    <string name="urlWSchecarConfirmacao1">http://192.168.1.3:8080/jersey/teste/checarConfirmacao</string>
     <string name="cpNomeTaxista"></string>
     <string name="cpPlacaTaxista"></string>
     <string name="title_confirma_pedido"></string>

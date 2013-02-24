@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/titulo_confirmacao"
         android:layout_marginTop="34dp"
-        android:text="Nome Taxista" />
+        android:text="Nome Taxista: " />
 
     <TextView
         android:id="@+id/titulo_confirmacao"
@@ -28,9 +28,10 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/cpNomeTaxista"
         android:layout_marginTop="51dp"
-        android:text="Placa Taxi" />
+        android:text="Placa Taxi: " />
 
-    <EditText
+<!-- Campos aonde irão aparecer os resultados -->
+    <TextView
         android:id="@+id/cpPlacaTaxista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
         android:ems="10"
         android:text="@string/cpPlacaTaxista" />
 
-    <EditText
+    <TextView
         android:id="@+id/cpNomeTaxista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

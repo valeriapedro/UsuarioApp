@@ -75,7 +75,7 @@ public final class R {
         /**  Url para acessar WS apartir do emulador 
          */
         public static final int url_ws1_chamartaxi=0x7f04000c;
-        /**  Url para acessa WS apartir do celular do Jonathan
+        /**  Url para acessa WS apartir do celular
          */
         public static final int url_ws2_chamartaxi=0x7f04000f;
     }

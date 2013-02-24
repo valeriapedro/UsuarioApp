@@ -22,11 +22,12 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 //import br.livro.android.cap7.R;
 import android.widget.Toast;
 
 /**
- * Exemplo de como fazer o download de uma imagem da Web através de uma URL
+ * Tela que realiza a busca na web service de um taxi mostrando uma barra de progresso e em seguida atualiza a tela.
  * 
 
  * 
@@ -54,10 +55,10 @@ public class BuscandoTaxiActivity extends Activity {
 	   
 		
 		//Abre a janela com a barra de progresso 
-		dialog = ProgressDialog.show(this,"Exemplo", "Buscando taxi, por favor aguarde...", false,true);
+		dialog = ProgressDialog.show(this,"Taxi Caller", "Buscando taxi, por favor aguarde...", false,true);
 
-		//buscaTaxi();
-		enviarPedido() ; //Envia o pedido à WS
+		//Envia o pedido à WS
+		enviarPedido() ; 
 	}
 	
 	//Recupera parametros da classe Bundle da tela anterior: Latitude, Longitude e Endereco
@@ -152,7 +153,8 @@ public class BuscandoTaxiActivity extends Activity {
 		}//Fecha run
 	};//.start();//Fecha Thread
 	//}
-	/*******************************************************/
+	
+	/**************************************************************************/
 	
 	//Atualizar a tela com uma mensagem de confirmaçao para o usuario informando nome e placa
 	//Utiliza um Handler para atualizar a tela
@@ -162,10 +164,11 @@ public class BuscandoTaxiActivity extends Activity {
 				//Fecha a janela de progresso
 				dialog.dismiss();
 				
+				TextView txtTituloTaxiEncontrado = (TextView) findViewById(R.id.titulo_confirmacao);
+				TextView cpNomeTaxista = (TextView) findViewById(R.id.cpNomeTaxista);
+				TextView cpPlacaTaxista = (TextView) findViewById(R.id.cpPlacaTaxista);
 				
-				EditText cpNomeTaxista = (EditText) findViewById(R.id.cpNomeTaxista);
-				EditText cpPlacaTaxista = (EditText) findViewById(R.id.cpPlacaTaxista);
-				
+				txtTituloTaxiEncontrado.setText("Taxi a caminho!");
 				cpNomeTaxista.setText(nomeTaxista);
 				cpPlacaTaxista.setText(placaTaxista);
 				//ImageView imgView = (ImageView) findViewById(R.id.img);
